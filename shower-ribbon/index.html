@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Ribbon theme for Shower</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="styles/screen.css">
+	<link href='http://fonts.googleapis.com/css?family=Marck+Script&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+</head>
+<body class="list">
+	<!--
+		Debug class on <body> enables
+		cyan grid on slides
+		-->
+	<header class="caption">
+		<h1>Анимируем объекты с&nbsp;использованием<br>физики в&nbsp;JavaScript</h1>
+		<p><a href="https://twitter.com/liveldi90">Иванова Елена</a></p>
+	</header>
+	<section class="slide SlideHeader">
+		<div>
+			<h1 class="SlideHeader-title">Анимируем объекты с&nbsp;использованием физики в&nbsp;JavaScript</h1>
+			<time class="SlideHeader-time" datetime="2015-07-31 19:00">31 июля 2015</time>
+
+			<div class="SlideHeader-author">
+				<div class="SlideHeader-name">Иванова Елена</div>
+				<div class="SlideHeader-twitter"><a href="https://twitter.com/liveldi90"  target="_blank" class="SlideHeader-link">@liveldi90</a></div>
+				<div class="SlideHeader-note">Фронтенд разработчик</div>
+			</div>
+
+			<img class="SlideHeader-logo" src="pictures/logo.png" />
+			<img class="SlideHeader-logoPresentation" src="pictures/logo-presentation.png" />
+		</div>
+	</section>
+	<section class="slide SlidePlan">
+		<div class="SlidePlan-container">
+			<h2 class="Slide-title">Содержание</h2>
+			<ul class="SlidePlan-list">
+				<li class="SlidePlan-item SlidePlan-item--animation">Анимация</li>
+				<li class="SlidePlan-item SlidePlan-item--constructors">Конструкторы</li>
+				<li class="SlidePlan-item SlidePlan-item--moving">Движение</li>
+				<li class="SlidePlan-item SlidePlan-item--friction">Сила трения</li>
+				<li class="SlidePlan-item SlidePlan-item--acceleration">Ускорение и прыжки</li>
+				<li class="SlidePlan-item SlidePlan-item--spring">Пружины и колебания</li>
+			</ul>
+		</div>
+	</section>
+	<section class="slide shout grow SlideTitle SlideTitle--animation">
+		<div>
+			<h2 class="SlideTitle-title">Анимация</h2>
+		</div>
+	</section>
+	<section class="slide SlideImage">
+		<div>
+			<img src="pictures/animation.png" class="SlideImage-image"/>
+		</div>
+	</section>
+	<section class="slide SlideImage">
+		<div>
+			<img src="pictures/animation.gif" class="SlideImage-image"/>
+		</div>
+	</section>
+	<section class="slide SlideCode">
+		<div class="Code">
+			<img class="Image--1" src="pictures/question.png" />
+			<pre class="Code-1">
+				<code><span class="Code--blue">setTimeout</span>(func, <span class="Code--purple">1000</span>/fps);</code>
+				<code><span class="Code--blue">setInterval</span>(func, <span class="Code--purple">1000</span>/fps);</code>
+				<code><span class="Code--blue">requestAnimationFrame</span>(func);</code>
+			</pre>
+		</div>
+	</section>
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-1">
+				<code class="Code-hidden"><span class="Code--blue">setTimeout</span>(func, <span class="Code--purple">1000</span>/fps);</code>
+				<code class="Code-hidden"><span class="Code--blue">setInterval</span>(func, <span class="Code--purple">1000</span>/fps);</code>
+				<code><span class="Code--blue">requestAnimationFrame</span>(func);</code>
+			</pre>
+		</div>
+	</section>
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-2">
+				<code><span class="Code--blue">var</span> t0 <span class="Code--red">=</span> <span class="Code--purple">0</span>, dt;</code>
+				<code><span class="Code--blue">var</span> kSmooth <span class="Code--red">=</span> <span class="Code--purple">0.001</span>;</code>
+
+				<code><span class="Code--blue">function</span> <span class="Code--green">onTimer</span>() {</code>
+				<code>	<span class="Code--blue">var</span> t1 <span class="Code--red">=</span> <span class="Code--red">new</span> Date().<span class="Code--blue">getTime</span>();</code>
+				<code>	dt <span class="Code--red">=</span> (t1 <span class="Code--red">—</span> t0) <span class="Code--red">*</span> kSmothing ;</code>
+				<code>	t0 <span class="Code--red">=</span> t1;</code>
+				<code>	<span class="Code--gray">// Меняем кадры</span></code>
+				<code>}</code>
+			</pre>
+		</div>
+	</section>
+	<section class="slide shout grow SlideTitle SlideTitle--constructors">
+		<div>
+			<h2 class="SlideTitle-title">Конструкторы</h2>
+		</div>
+	</section>
+	<section class="slide SlideCode">
+		<div class="Code">
+			<h2 class="Code-title"><span class="Code--brown">ОБЪЕКТ — параметры</span></h2>
+			<pre class="Code-3">
+				<code><span class="Code--blue">var</span> <span class="Code--green">Obj</span> <span class="Code--red">=</span> <span class="Code--blue">function</span> (<span class="Code--orange">ops</span>) {</code>
+				<code>	<span class="Code--blue">this</span>.$el <span class="Code--gray"> // Доступ к элементу</span></code>
+				<code>	<span class="Code--blue">this</span>.mass <span class="Code--gray">// Масса</span></code>
+
+				<code>	<span class="Code--blue">this</span>.x <span class="Code--gray">   // Позиция x, y</span></code>
+				<code>	<span class="Code--blue">this</span>.y</code>
+
+				<code>	<span class="Code--blue">this</span>.vx <span class="Code--gray">  // Cкорость по x, y</span></code>
+				<code>	<span class="Code--blue">this</span>.vy</code>
+				<code>… };</code>
+			</pre>
+		</div>
+	</section>
+	<section class="slide SlideCode">
+		<div class="Code">
+			<h2 class="Code-title"><span class="Code--brown">ОБЪЕКТ — методы</span></h2>
+			<pre class="Code-4">
+				<code><span class="Code--blue">Obj</span>.<span class="Code--blue">prototype</span>.pos</code>
+				<code><span class="Code--blue">Obj</span>.<span class="Code--blue">prototype</span>.velo</code>
+			</pre>
+		</div>
+	</section>
+	<section class="slide SlideCode">
+		<div class="Code">
+			<img class="Image--2" src="pictures/vector.png" />
+			<h2 class="Code-title"><span class="Code--brown">ВЕКТОР — параметры</span></h2>
+			<pre class="Code-5">
+				<code><span class="Code--blue">var</span> <span class="Code--green">Vector</span> <span class="Code--red">=</span> <span class="Code--blue">function</span> (<span class="Code--orange">x</span>, <span class="Code--orange">y</span>) {</code>
+				<code>	<span class="Code--blue">this</span>.x <span class="Code--red">=</span> x;</code>
+				<code>	<span class="Code--blue">this</span>.y <span class="Code--red">=</span> y;</code>
+				<code>};</code>
+			</pre>
+		</div>
+	</section>
+	<section class="slide SlideCode">
+		<div class="Code">
+			<h2 class="Code-title"><span class="Code--brown">ВЕКТОР — методы</span></h2>
+			<pre class="Code-6">
+				<code><span class="Code--blue">Vector</span>.<span class="Code--blue">prototype</span>.length()</code>
+				<code><span class="Code--blue">Vector</span>.<span class="Code--blue">prototype</span>.add(<span class="Code--orange">vec</span>)</code>
+				<code><span class="Code--blue">Vector</span>.<span class="Code--blue">prototype</span>.subtract(<span class="Code--orange">vec</span>)</code>
+				<code><span class="Code--blue">Vector</span>.<span class="Code--blue">prototype</span>.multiply(<span class="Code--orange">k</span>)</code>
+				<code><span class="Code--blue">Vector</span>.<span class="Code--blue">prototype</span>.divide(<span class="Code--orange">k</span>)</code>
+			</pre>
+		</div>
+	</section>
+	<section class="slide SlideCode">
+		<div class="Code">
+			<h2 class="Code-title"><span class="Code--brown">ВЕКТОР — методы</span></h2>
+			<pre class="Code-7">
+				<code><span class="Code--blue">Vector</span>.<span class="Code--blue">prototype</span>.addScaled <span class="Code--red">=</span> </code>
+				<code>	<span class="Code--blue">function</span> (<span class="Code--orange">vec</span>, <span class="Code--orange">k</span>) {</code>
+				<code>		<span class="Code--red">return new</span> Vector(</code>
+				<code>			<span class="Code--blue">this</span>.x <span class="Code--red">+</span> k <span class="Code--red">*</span> vec.<span class="Code--blue">x</span>, </code>
+				<code>			<span class="Code--blue">this</span>.y <span class="Code--red">+</span> k <span class="Code--red">*</span> vec.<span class="Code--blue">y</span>);</code>
+				<code>	};</code>
+			</pre>
+		</div>
+	</section>
+	<section class="slide shout grow SlideTitle SlideTitle--moving">
+		<div>
+			<h2 class="SlideTitle-title SlideTitle-title--dark">Движение</h2>
+		</div>
+	</section>
+	<section class="slide">
+		<div class="container1 container">
+			<div class="ball1"></div>
+			<div class="floor1"></div>
+		</div>
+	</section>
+	<section class="slide">
+		<div class="container1 container">
+			<img class="Formula--1" src="pictures/formula1.png"/>
+			<div class="ball1"></div>
+			<div class="floor1"></div>
+		</div>
+	</section>
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-8">
+				<code>obj.pos <span class="Code--red">= new</span> Vector(<span class="Code--purple">10</span>, <span class="Code--purple">0</span>);</code>
+				<code>obj.velo <span class="Code--red">= new</span> Vector(<span class="Code--purple">60</span>, <span class="Code--purple">0</span>);</code>
+				<br>
+				<code class="Code-hidden"><span class="Code--blue">function</span> <span class="Code--green">move</span>() {</code>
+				<code class="Code-hidden">	obj.pos <span class="Code--red">=</span></code>
+				<code class="Code-hidden">		obj.pos.<span class="Code--blue">addScaled</span>(obj.velo, dt);</code>
+				<code class="Code-hidden">}</code>
+			</pre>
+		</div>
+	</section>
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-8">
+				<code>obj.pos <span class="Code--red">= new</span> Vector(<span class="Code--purple">10</span>, <span class="Code--purple">0</span>);</code>
+				<code>obj.velo <span class="Code--red">= new</span> Vector(<span class="Code--purple">60</span>, <span class="Code--purple">0</span>);</code>
+				<br>
+				<code><span class="Code--blue">function</span> <span class="Code--green">move</span>() {</code>
+				<code>	obj.pos <span class="Code--red">=</span></code>
+				<code>		obj.pos.<span class="Code--blue">addScaled</span>(obj.velo, dt);</code>
+				<code>}</code>
+			</pre>
+			<img class="Formula--2" src="pictures/formula2.png"/>
+		</div>
+	</section>
+	<section class="slide SlideExample">
+		<div class="container1 container js-example1">
+			<div class="ball1"></div>
+			<div class="floor1"></div>
+		</div>
+	</section>
+	<section class="slide shout grow SlideTitle SlideTitle--friction">
+		<div>
+			<h2 class="SlideTitle-title">Сила трения</h2>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2 class="Slide-title">Кинетическая энергия</h2>
+			<img class="Formula--3" src="pictures/formula3.png"/>
+			<img class="Arrow--2" src="pictures/arrow1.png"/>
+			<img class="Formula--4" src="pictures/formula4.png"/>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div class="FrictionFirst">
+			<h2 class="FrictionFirst-title1">Мощность</h2>
+			<img class="Formula--5" src="pictures/formula5.png"/>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div class="FrictionFirst">
+			<h2 class="FrictionFirst-title1">Мощность</h2>
+			<img class="Formula--5" src="pictures/formula5.png"/>
+			<h2 class="FrictionFirst-title2">Сила трения</h2>
+			<img class="Formula--6" src="pictures/formula6.png"/>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div class="FrictionFirst">
+			<h2 class="FrictionFirst-title1">Мощность</h2>
+			<img class="Formula--5" src="pictures/formula5.png"/>
+			<h2 class="FrictionFirst-title2">Сила трения</h2>
+			<img class="Formula--6" src="pictures/formula6.png"/>
+			<img class="Brace--1" src="pictures/brace1.png"/>
+			<img class="Formula--7" src="pictures/formula7.png"/>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2 class="Slide-title">Изменение кинетической энергии</h2>
+			<img class="Formula--9" src="pictures/formula9.png"/>
+		</div>
+	</section>
+	
+	<section class="slide">
+		<div>
+			<h2 class="Slide-title">Изменение кинетической энергии</h2>
+			<img class="Formula--9" src="pictures/formula9.png"/>
+			<img class="Formula--10" src="pictures/formula10.png"/>
+			<img class="Brace--3" src="pictures/brace2.png"/>
+			<img class="Formula--11" src="pictures/formula11.png"/>
+		</div>
+	</section>
+
+	<section class="slide SlideExample">
+		<div class="container2 container js-example2">
+			<div class="ball2"></div>
+		</div>
+	</section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-9">
+				<h2 class="Code-title"><span class="Code--brown">НАЧАЛЬНЫЕ РАСЧЕТЫ</span></h2>
+				<code><span class="Code--blue">var</span> displ <span class="Code--red">=</span> obj.pos.subtract(obj.pos0);</code>
+				<code>obj.velo <span class="Code--red">= </span>displ.divide((t1 <span class="Code--red">—</span> t0) <span class="Code--red">*</span> kSmooth);</code>
+				<br>
+				<code>ke <span class="Code--red">= new</span> Vector(</code>
+				<code>	<span class="Code--purple">0.5</span> <span class="Code--red">*</span> obj.mass <span class="Code--red">*</span> obj.vx <span class="Code--red">*</span> obj.vx,</code>
+				<code>	<span class="Code--purple">0.5</span> <span class="Code--red">*</span> obj.mass <span class="Code--red">*</span> obj.vy <span class="Code--red">*</span> obj.vy);</code>
+				<img class="Formula--12" src="pictures/formula12.png"/>
+				<img class="Formula--13" src="pictures/formula13.png"/>
+			</pre>
+		</div>
+	</section>
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-10">
+				<h2 class="Code-title"><span class="Code--brown">ОБНОВЛЕНИЕ КИНЕТИЧЕСКОЙ<br>ЭНЕРГИИ</span></h2>
+				<code><span class="Code--blue">var</span> powerLoss <span class="Code--red">= new</span> Vector(</code>
+				<code>	powerLossFactor <span class="Code--red">*</span> obj.vx <span class="Code--red">*</span> obj.vx <span class="Code--red">*</span> dt,</code>
+				<code>	powerLossFactor <span class="Code--red">*</span> obj.vy <span class="Code--red">*</span> obj.vy <span class="Code--red">*</span> dt);</code>
+				<br>
+				<code>ke <span class="Code--red">=</span> ke.<span class="Code--blue">subtract</span>(powerLoss);</code>
+
+				<img class="Formula--14" src="pictures/formula14.png"/>
+			</pre>
+		</div>
+	</section>
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-11">
+				<h2 class="Code-title"><span class="Code--brown">ОБНОВЛЕНИЕ СКОРОСТИ</span></h2>
+				<code>obj.velo <span class="Code--red">= new</span> Vector(</code>
+				<code>	<span class="Code--blue">Math</span>.<span class="Code--blue">sqrt</span>(<span class="Code--purple">2</span> <span class="Code--red">*</span> ke.x <span class="Code--red">/</span> obj.mass), </code>
+				<code>	<span class="Code--blue">Math</span>.<span class="Code--blue">sqrt</span>(<span class="Code--purple">2</span> <span class="Code--red">*</span> ke.y <span class="Code--red">/</span> obj.mass) </code>
+				<code>);</code>
+				<br>
+				<h2 class="Code-title"><span class="Code--brown">ОБНОВЛЕНИЕ ПОЗИЦИИ</span></h2>
+				<code>obj.pos <span class="Code--red">=</span> obj.pos.<span class="Code--blue">addScaled</span>(obj.velo, dt);</code>
+				<img class="Formula--15" src="pictures/formula15.png"/>
+				<img class="Formula--16" src="pictures/formula16.png"/>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide SlideExample">
+		<div class="container3 container js-example3">
+			<article class="Story Story--1">
+        		<div class="Story-wrapper Story-wrapper--1">
+            		<section class="Story-introduction">
+            			<h1 class="Story-title"> Стихотворение<br>про котёнка</h1>
+            			<br>
+            			<div class="Story-preview"></div>
+            		</section>
+
+		            <section class="Story-part Story-part1">
+		                <p> 
+		                    Как хорошо, когда живёт<br>
+		                    Котёнок в доме вашем.<br>
+		                    Тогда не скучно вам вдвоём<br>
+		                    И мрак ночной не страшен.
+		                </p>
+		                <p> 
+		                    И днём вам радостно играть<br>
+		                    С пушистым непоседой.<br>
+		                    И на диване c ним лежать,<br>
+		                    Вздремнув после обеда.
+		                </p>
+		                <img class="Story-image Story-image1" src="pictures/02.jpg" />
+		                <img class="Story-image Story-image2" src="pictures/03.jpg" />
+		            </section>
+
+		            <section class="Story-part Story-part2">
+		                <p>
+		                    А если в двери постучит<br>
+		                    К вам кто-то незнакомый,<br>
+		                    То вам пугаться ни к чему —<br>
+		                    Ведь не один вы дома.
+		                </p>
+		                <p> 
+		                    Котёнок мягоньким бочком<br>
+		                    К вам ласково прижмётся,<br>
+		                    И вы поймёте — вместе с ним<br>
+		                    Чудеснее живётся!
+		                </p>
+		                <img class="Story-image Story-image1" src="pictures/04.jpg" />
+		                <img class="Story-image Story-image2" src="pictures/06.jpg" />
+		                <img class="Story-image Story-image2" src="pictures/07.jpg" />
+		            </section>
+		        </div>
+	        </article>
+		</div>
+	</section>
+	
+	<section class="slide SlideSpeed"></section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-12">
+				<h2 class="Code-title" style="margin-bottom: 56px;"><span class="Code--brown">ДОБАВЛЯЕМ МОЩНОСТИ</span></h2>
+				<code><span class="Code--blue">if</span> (applyThrust) {</code>
+				<code>	ke <span class="Code--red">=</span> ke.<span class="Code--blue">add</span>(<span class="Code--red">new</span> Vector(</code>
+				<code> 				powerApplied <span class="Code--red">*</span> dt,</code> 
+				<code>				powerApplied <span class="Code--red">*</span> dt)</code>
+				<code>			);</code>        
+				<code>}</code>
+				<img class="Formula--17" src="pictures/formula17.png"/>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide SlideExample">
+		<div class="container3 container js-example4">
+			<article class="Story Story--2">
+				<div class="Story-nav Story-navPrev Story-navDis"></div>
+				<div class="Story-nav Story-navNext"></div>
+        		<div class="Story-wrapper Story-wrapper--2">
+            		<section class="Story-introduction">
+            			<h1 class="Story-title"> Стихотворение<br>про котёнка</h1>
+            			<br>
+            			<div class="Story-preview"></div>
+            		</section>
+
+		            <section class="Story-part Story-part1">
+		                <p> 
+		                    Как хорошо, когда живёт<br>
+		                    Котёнок в доме вашем.<br>
+		                    Тогда не скучно вам вдвоём<br>
+		                    И мрак ночной не страшен.
+		                </p>
+		                <p> 
+		                    И днём вам радостно играть<br>
+		                    С пушистым непоседой.<br>
+		                    И на диване c ним лежать,<br>
+		                    Вздремнув после обеда.
+		                </p>
+		                <img class="Story-image Story-image1" src="pictures/02.jpg" />
+		                <img class="Story-image Story-image2" src="pictures/03.jpg" />
+		            </section>
+
+		            <section class="Story-part Story-part2">
+		                <p>
+		                    А если в двери постучит<br>
+		                    К вам кто-то незнакомый,<br>
+		                    То вам пугаться ни к чему —<br>
+		                    Ведь не один вы дома.
+		                </p>
+		                <p> 
+		                    Котёнок мягоньким бочком<br>
+		                    К вам ласково прижмётся,<br>
+		                    И вы поймёте — вместе с ним<br>
+		                    Чудеснее живётся!
+		                </p>
+		                <img class="Story-image Story-image1" src="pictures/04.jpg" />
+		                <img class="Story-image Story-image2" src="pictures/06.jpg" />
+		                <img class="Story-image Story-image2" src="pictures/07.jpg" />
+		            </section>
+		        </div>
+	        </article>
+		</div>
+	</section>
+
+	<section class="slide shout grow SlideTitle SlideTitle--acceleration">
+		<div>
+			<h2 class="SlideTitle-title">Ускорение<br>и прыжки</h2>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2 class="Slide-title">Ускорение</h2>
+			<div class="ball3"></div>
+			<img class="Arrow--4" src="pictures/arrow2.png"/>
+			<img class="Arrow--5" src="pictures/arrow3.png"/>
+			<img class="Formula--18" src="pictures/formula18.png"/>
+			<img class="Formula--19" src="pictures/formula19.png"/>
+			<img class="Formula--20" src="pictures/formula20.png"/>
+			<img class="Brace--4" src="pictures/brace1.png"/>
+			<h3 class="TitleSmall" style="position: absolute;top: 200px;left: 245px;">Сила<br>сопротивления (D)</h3>
+			<h3 class="TitleSmall" style="position: absolute;bottom: 126px;left: 245px;">Гравитация (W)</h3>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2 class="Slide-title">Ускорение</h2>
+			<img class="Formula--21" src="pictures/formula21.png" style="position: absolute;width: 150px;margin-left: 129px;"/>
+			<img class="Formula--22" src="pictures/formula22.png" style="position: absolute;width: 194px;right: 261px;"/>
+			<img style="position: absolute;width: 64%;left: 18%;bottom: 0;" src="pictures/apple.png"/>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div class="container5 container js-example5">
+			<div class="ball5"></div>
+			<div class="floor5"></div>
+		</div>
+	</section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-12">
+				<h2 class="Code-title"><span class="Code--brown">РАСЧЕТ СИЛЫ</span></h2>
+				<code>obj.force <span class="Code--red">=</span></code>
+				<code style="margin-bottom: 62px;"> 	<span class="Code--red">new</span> Vector(<span class="Code--purple">0</span>, obj.mass <span class="Code--red">*</span> g <span class="Code--red">—</span> k <span class="Code--red">*</span> obj.vy);</code>
+				<img class="Formula--23" src="pictures/formula23.png"/>
+				<br>
+				<h2 class="Code-title"><span class="Code--brown">ОБНОВЛЕНИЕ УСКОРЕНИЯ</span></h2>
+				<code>obj.acc <span class="Code--red">=</span> force.<span class="Code--blue">divide</span>(obj.mass);</code>
+				<img class="Formula--24" src="pictures/formula24.png"/>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-12">
+				<h2 class="Code-title"><span class="Code--brown">ОБНОВЛЕНИЕ СКОРОСТИ</span></h2>
+				<code style="margin-bottom: 70px;">obj.velo <span class="Code--red">=</span> obj.velo.<span class="Code--blue">addScaled</span>(obj.acc, dt);</code>
+				<img class="Formula--25" src="pictures/formula25.png"/>
+				<br>
+				<h2 class="Code-title"><span class="Code--brown">ОБНОВЛЕНИЕ ПОЗИЦИИ</span></h2>
+				<code>obj.pos <span class="Code--red">=</span> obj.pos.<span class="Code--blue">addScaled</span>(obj.velo, dt);</code>
+				<img class="Formula--26" src="pictures/formula26.png"/>
+			</pre>
+		</div>
+	</section>
+
+
+
+	<section class="slide">
+		<div>
+			<h2 class="Slide-title">Удары о поверхность</h2>
+			<img style="width: 71%;position: absolute;bottom: 21px;left: 170px;" src="pictures/hit01.jpg"/>
+			<div class="floor20"></div>
+			<div class="floor21"></div>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2 class="Slide-title">Фиксация удара</h2>
+			<img style="width: 61.5%;position: absolute;" src="pictures/hit02.jpg"/>
+			<div class="floor22"></div>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2 class="Slide-title">Фиксация удара</h2>
+			<img style="width: 69.5%;position: absolute;left: 30px;bottom: 41px;" src="pictures/hit03.jpg"/>
+			<div class="floor23"></div>
+			<img class="Formula--44" src="pictures/formula44.png"/>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2 class="Slide-title">Фиксация удара</h2>
+			<img style="width: 69.5%;position: absolute;left: 30px;bottom: 41px;" src="pictures/hit03.jpg"/>
+			<div class="floor23"></div>
+			<img class="Formula--40" src="pictures/formula40.png"/>
+			<img class="Formula--44" src="pictures/formula44.png"/>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2 class="Slide-title">Фиксация удара</h2>
+			<img style="width: 69.5%;position: absolute;left: 30px;bottom: 41px;" src="pictures/hit03.jpg"/>
+			<div class="floor23"></div>
+			<img class="Formula--40" src="pictures/formula40.png"/>
+			<img class="Formula--41" src="pictures/formula41.png"/>
+			<img class="Formula--42" src="pictures/formula42.png"/>
+			<img class="Formula--44" src="pictures/formula44.png"/>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2 class="Slide-title">Фиксация удара</h2>
+			<img style="width: 69.5%;position: absolute;left: 30px;bottom: 41px;" src="pictures/hit03.jpg"/>
+			<div class="floor23"></div>
+			<img class="Formula--40" src="pictures/formula40.png"/>
+			<img class="Formula--41" src="pictures/formula41.png"/>
+			<img class="Formula--42" src="pictures/formula42.png"/>
+			<img class="Formula--43" src="pictures/formula43.png"/>
+			<img class="Formula--44" src="pictures/formula44.png"/>
+		</div>
+	</section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-12">
+				<h2 class="Code-title"><span class="Code--brown">РАССТОЯНИЕ ДО УДАРА</span></h2>
+				<div style="font-size: 0.9em;padding-top: 35px;">
+					<code><span class="Code--blue">var</span> a <span class="Code--red">=</span> A.<span class="Code--blue">subtract</span>(obj.pos);</code>
+					<code style="margin-bottom: 22px;"><span class="Code--blue">var</span> c <span class="Code--red">=</span> B.<span class="Code--blue">subtract</span>(obj.pos);</code>
+					
+					<code  class="Code-hidden"><span class="Code--blue">var</span> b1Len <span class="Code--red">=</span> a.<span class="Code--blue">projection</span>(floor);</code>
+					<code  class="Code-hidden" style="margin-bottom: 22px;"><span class="Code--blue">var</span> b2Len <span class="Code--red">=</span> c.<span class="Code--blue">projection</span>(floor);</code>
+
+					<code  class="Code-hidden"><span class="Code--blue">var</span> b1 <span class="Code--red">=</span> floor.<span class="Code--blue">transfer</span>(b1Len);</code>
+					<code  class="Code-hidden"><span class="Code--blue">var</span> dist <span class="Code--red">=</span> a.<span class="Code--blue">subtract</span>(b1);</code>
+					<img class="Formula--46" src="pictures/formula46.png"/>
+					<!-- <img class="Formula--47" src="pictures/formula47.png"/> -->
+					<!-- <img class="Formula--48" src="pictures/formula48.png"/> -->
+					<!-- <img class="Formula--50" src="pictures/formula50.png"/> -->
+					<!-- <img class="Formula--51" src="pictures/formula51.png"/> -->
+					<img class="Formula--52" src="pictures/formula52.png"/>
+				</div>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-12">
+				<h2 class="Code-title"><span class="Code--brown">РАССТОЯНИЕ ДО УДАРА</span></h2>
+				<div style="font-size: 0.9em;padding-top: 35px;">
+					<code class="Code-hidden" ><span class="Code--blue">var</span> a <span class="Code--red">=</span> A.<span class="Code--blue">subtract</span>(obj.pos);</code>
+					<code  class="Code-hidden" style="margin-bottom: 22px;"><span class="Code--blue">var</span> c <span class="Code--red">=</span> B.<span class="Code--blue">subtract</span>(obj.pos);</code>
+					
+					<code><span class="Code--blue">var</span> b1Len <span class="Code--red">=</span> a.<span class="Code--blue">projection</span>(floor);</code>
+					<code style="margin-bottom: 22px;"><span class="Code--blue">var</span> b2Len <span class="Code--red">=</span> c.<span class="Code--blue">projection</span>(floor);</code>
+
+					<code class="Code-hidden"><span class="Code--blue">var</span> b1 <span class="Code--red">=</span> floor.<span class="Code--blue">transfer</span>(b1Len);</code>
+					<code class="Code-hidden"><span class="Code--blue">var</span> dist <span class="Code--red">=</span> a.<span class="Code--blue">subtract</span>(b1);</code>
+					<!-- <img class="Formula--46" src="pictures/formula46.png"/> -->
+					<img class="Formula--47" src="pictures/formula47.png"/>
+					<!-- <img class="Formula--48" src="pictures/formula48.png"/> -->
+					<!-- <img class="Formula--50" src="pictures/formula50.png"/> -->
+					<img class="Formula--51" src="pictures/formula51.png"/>
+					<!-- <img class="Formula--52" src="pictures/formula52.png"/> -->
+				</div>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-12">
+				<h2 class="Code-title"><span class="Code--brown">РАССТОЯНИЕ ДО УДАРА</span></h2>
+				<div style="font-size: 0.9em;padding-top: 35px;">
+					<code class="Code-hidden" ><span class="Code--blue">var</span> a <span class="Code--red">=</span> A.<span class="Code--blue">subtract</span>(obj.pos);</code>
+					<code  class="Code-hidden" style="margin-bottom: 22px;"><span class="Code--blue">var</span> c <span class="Code--red">=</span> B.<span class="Code--blue">subtract</span>(obj.pos);</code>
+					
+					<code class="Code-hidden"><span class="Code--blue">var</span> b1Len <span class="Code--red">=</span> a.<span class="Code--blue">projection</span>(floor);</code>
+					<code class="Code-hidden" style="margin-bottom: 22px;"><span class="Code--blue">var</span> b2Len <span class="Code--red">=</span> c.<span class="Code--blue">projection</span>(floor);</code>
+
+					<code><span class="Code--blue">var</span> b1 <span class="Code--red">=</span> floor.<span class="Code--blue">transfer</span>(b1Len);</code>
+					<code><span class="Code--blue">var</span> dist <span class="Code--red">=</span> a.<span class="Code--blue">subtract</span>(b1);</code>
+					<!-- <img class="Formula--46" src="pictures/formula46.png"/> -->
+					<!-- <img class="Formula--47" src="pictures/formula47.png"/> -->
+					<img class="Formula--48" src="pictures/formula48.png"/>
+					<img class="Formula--50" src="pictures/formula50.png"/>
+					<!-- <img class="Formula--51" src="pictures/formula51.png"/> -->
+					<!-- <img class="Formula--52" src="pictures/formula52.png"/> -->
+				</div>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-12">
+				<h2 class="Code-title"><span class="Code--brown">РАССТОЯНИЕ ДО УДАРА</span></h2>
+				<div style="font-size: 0.9em;padding-top: 35px;">
+					<code><span class="Code--blue">var</span> a <span class="Code--red">=</span> A.<span class="Code--blue">subtract</span>(obj.pos);</code>
+					<code style="margin-bottom: 22px;"><span class="Code--blue">var</span> c <span class="Code--red">=</span> B.<span class="Code--blue">subtract</span>(obj.pos);</code>
+					
+					<code><span class="Code--blue">var</span> b1Len <span class="Code--red">=</span> a.<span class="Code--blue">projection</span>(floor);</code>
+					<code style="margin-bottom: 22px;"><span class="Code--blue">var</span> b2Len <span class="Code--red">=</span> c.<span class="Code--blue">projection</span>(floor);</code>
+
+					<code><span class="Code--blue">var</span> b1 <span class="Code--red">=</span> floor.<span class="Code--blue">transfer</span>(b1Len);</code>
+					<code><span class="Code--blue">var</span> dist <span class="Code--red">=</span> a.<span class="Code--blue">subtract</span>(b1);</code>
+					<img class="Formula--46" src="pictures/formula46.png"/>
+					<img class="Formula--47" src="pictures/formula47.png"/>
+					<img class="Formula--48" src="pictures/formula48.png"/>
+					<img class="Formula--50" src="pictures/formula50.png"/>
+					<img class="Formula--51" src="pictures/formula51.png"/>
+					<img class="Formula--52" src="pictures/formula52.png"/>
+				</div>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-12">
+				<h2 class="Code-title"><span class="Code--brown">РАССТОЯНИЕ ДО УДАРА</span></h2>
+				<div style="font-size: 0.9em;padding-top: 46px;">
+					<code style="margin-bottom: 20px;"><span class="Code--blue">var</span> floorLen <span class="Code--red">=</span> floor.<span class="Code--blue">length</span>();</code>
+					<code class="Code-hidden"><span class="Code--blue">var</span> test <span class="Code--red">=</span> ((<span class="Code--blue">Math</span>.<span class="Code--blue">abs</span>(b1Len ) <span class="Code--red"><</span> floorLen) <span class="Code--red">&&</span></code>
+
+					<code class="Code-hidden" style="margin-bottom: 20px;">			(<span class="Code--blue">Math</span>.<span class="Code--blue">abs</span>(b2Len ) <span class="Code--red"><</span> floorLen))</code>
+			
+					<code class="Code-hidden"><span class="Code--blue">if</span> ((dist.<span class="Code--blue">length</span>() <span class="Code--red"><=</span> obj.radius) <span class="Code--red">&&</span> test) {</code>
+					<code class="Code-hidden">	…</code>
+					<code class="Code-hidden">}</code>
+				</div>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-12">
+				<h2 class="Code-title"><span class="Code--brown">РАССТОЯНИЕ ДО УДАРА</span></h2>
+				<div style="font-size: 0.9em;padding-top: 46px;">
+					<code style="margin-bottom: 20px;"><span class="Code--blue">var</span> floorLen <span class="Code--red">=</span> floor.<span class="Code--blue">length</span>();</code>
+					<code><span class="Code--blue">var</span> test <span class="Code--red">=</span> ((<span class="Code--blue">Math</span>.<span class="Code--blue">abs</span>(b1Len ) <span class="Code--red"><</span> floorLen) <span class="Code--red">&&</span></code>
+
+					<code style="margin-bottom: 20px;">			(<span class="Code--blue">Math</span>.<span class="Code--blue">abs</span>(b2Len ) <span class="Code--red"><</span> floorLen))</code>
+			
+					<code class="Code-hidden"><span class="Code--blue">if</span> ((dist.<span class="Code--blue">length</span>() <span class="Code--red"><=</span> obj.radius) <span class="Code--red">&&</span> test) {</code>
+					<code class="Code-hidden">	…</code>
+					<code class="Code-hidden">}</code>
+				</div>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-12">
+				<h2 class="Code-title"><span class="Code--brown">РАССТОЯНИЕ ДО УДАРА</span></h2>
+				<div style="font-size: 0.9em;padding-top: 46px;">
+					<code style="margin-bottom: 20px;"><span class="Code--blue">var</span> floorLen <span class="Code--red">=</span> floor.<span class="Code--blue">length</span>();</code>
+					<code><span class="Code--blue">var</span> test <span class="Code--red">=</span> ((<span class="Code--blue">Math</span>.<span class="Code--blue">abs</span>(b1Len ) <span class="Code--red"><</span> floorLen) <span class="Code--red">&&</span></code>
+
+					<code style="margin-bottom: 20px;">			(<span class="Code--blue">Math</span>.<span class="Code--blue">abs</span>(b2Len ) <span class="Code--red"><</span> floorLen))</code>
+			
+					<code><span class="Code--blue">if</span> ((dist.<span class="Code--blue">length</span>() <span class="Code--red"><=</span> obj.radius) <span class="Code--red">&&</span> test) {</code>
+					<code>	…</code>
+					<code>}</code>
+				</div>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-12">
+				<h2 class="Code-title"><span class="Code--brown">РАССТОЯНИЕ ДО УДАРА</span></h2>
+				<div style="font-size: 0.9em;padding-top: 46px;">
+					<code style="margin-bottom: 20px;"><span class="Code--blue">var</span> floorLen <span class="Code--red">=</span> floor.<span class="Code--blue">length</span>();</code>
+					<code><span class="Code--blue">var</span> test <span class="Code--red">=</span> ((<span class="Code--blue">Math</span>.<span class="Code--blue">abs</span>(b1Len ) <span class="Code--red"><</span> floorLen) <span class="Code--red">&&</span></code>
+
+					<code style="margin-bottom: 20px;">			(<span class="Code--blue">Math</span>.<span class="Code--blue">abs</span>(b2Len ) <span class="Code--red"><</span> floorLen))</code>
+			
+					<code><span class="Code--blue">if</span> ((dist.<span class="Code--blue">length</span>() <span class="Code--red"><=</span> obj.radius) <span class="Code--red">&&</span> test) {</code>
+					<code>	…</code>
+					<code>}</code>
+				</div>
+			</pre>
+		</div>
+	</section>
+	
+	<section class="slide">
+		<div>
+			<h2 class="Slide-title">Залипания</h2>
+			<img style="width: 100%;position: absolute;left: 0;bottom: 0;" src="pictures/hit04.jpg"/>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2 class="Slide-title">Залипания</h2>
+			<img style="width: 75.5%;position: absolute;left: 30px;bottom: -2px;" src="pictures/hit05.jpg"/>
+			<img class="Formula--58" src="pictures/formula58.png"/>
+			<img class="Formula--59" src="pictures/formula59.png"/>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2 class="Slide-title">Залипания</h2>
+			<img style="width: 75.5%;position: absolute;left: 30px;bottom: -2px;" src="pictures/hit06.jpg"/>
+			<img class="Formula--60" src="pictures/formula60.png"/>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2 class="Slide-title">Залипания</h2>
+			<img class="Formula--62" src="pictures/formula62.png"/>
+			<img class="Formula--63" src="pictures/formula63.png"/>
+		</div>
+	</section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-12">
+				<h2 class="Code-title"><span class="Code--brown">РЕПОЗИЦИОНИРОВАНИЕ</span></h2>
+				<div style="font-size: 0.9em;padding-top: 70px;">
+					<code style="margin-bottom: 20px;"><span class="Code--blue">var</span> angle <span class="Code--red">=</span> Vector.<span class="Code--blue">angleBetween</span>(obj.velo, floor);</code>
+
+					<code class="Code-hidden"><span class="Code--blue">var</span> loc <span class="Code--red">=</span> dist.<span class="Code--blue">dotProduct</span>(obj.velo);</code>
+					<code class="Code-hidden" style="margin-bottom: 20px;"><span class="Code--blue">var</span> n <span class="Code--red">=</span> (loc <span class="Code--red">></span> <span class="Code--purple">0</span>) <span class="Code--red">?</span> <span class="Code--purple">—1</span> <span class="Code--red">:</span> <span class="Code--purple">1</span>;</code>
+
+					<code class="Code-hidden"><span class="Code--blue">var</span> h <span class="Code--red">=</span> (obj.radius <span class="Code--red">+</span> dist.<span class="Code--blue">length</span>() <span class="Code--red">*</span> n) /</code>
+					<code class="Code-hidden"> 				<span class="Code--blue">Math</span>.<span class="Code--blue">sin</span>(angle);</code>
+					<!-- <img class="Formula--64" src="pictures/formula64.png"/> -->
+				</div>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-12">
+				<h2 class="Code-title"><span class="Code--brown">РЕПОЗИЦИОНИРОВАНИЕ</span></h2>
+				<div style="font-size: 0.9em;padding-top: 70px;">
+					<code style="margin-bottom: 20px;"><span class="Code--blue">var</span> angle <span class="Code--red">=</span> Vector.<span class="Code--blue">angleBetween</span>(obj.velo, floor);</code>
+
+					<code><span class="Code--blue">var</span> loc <span class="Code--red">=</span> dist.<span class="Code--blue">dotProduct</span>(obj.velo);</code>
+					<code style="margin-bottom: 20px;"><span class="Code--blue">var</span> n <span class="Code--red">=</span> (loc <span class="Code--red">></span> <span class="Code--purple">0</span>) <span class="Code--red">?</span> <span class="Code--purple">—1</span> <span class="Code--red">:</span> <span class="Code--purple">1</span>;</code>
+
+					<code class="Code-hidden"><span class="Code--blue">var</span> h <span class="Code--red">=</span> (obj.radius <span class="Code--red">+</span> dist.<span class="Code--blue">length</span>() <span class="Code--red">*</span> n) /</code>
+					<code class="Code-hidden"> 				<span class="Code--blue">Math</span>.<span class="Code--blue">sin</span>(angle);</code>
+					<!-- <img class="Formula--64" src="pictures/formula64.png"/> -->
+				</div>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-12">
+				<h2 class="Code-title"><span class="Code--brown">РЕПОЗИЦИОНИРОВАНИЕ</span></h2>
+				<div style="font-size: 0.9em;padding-top: 70px;">
+					<code style="margin-bottom: 20px;"><span class="Code--blue">var</span> angle <span class="Code--red">=</span> Vector.<span class="Code--blue">angleBetween</span>(obj.velo, floor);</code>
+
+					<code><span class="Code--blue">var</span> loc <span class="Code--red">=</span> dist.<span class="Code--blue">dotProduct</span>(obj.velo);</code>
+					<code style="margin-bottom: 20px;"><span class="Code--blue">var</span> n <span class="Code--red">=</span> (loc <span class="Code--red">></span> <span class="Code--purple">0</span>) <span class="Code--red">?</span> <span class="Code--purple">—1</span> <span class="Code--red">:</span> <span class="Code--purple">1</span>;</code>
+
+					<code><span class="Code--blue">var</span> h <span class="Code--red">=</span> (obj.radius <span class="Code--red">+</span> dist.<span class="Code--blue">length</span>() <span class="Code--red">*</span> n) /</code>
+					<code> 				<span class="Code--blue">Math</span>.<span class="Code--blue">sin</span>(angle);</code>
+					<img class="Formula--64" src="pictures/formula64.png"/>
+				</div>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-12">
+				<h2 class="Code-title"><span class="Code--brown">РЕПОЗИЦИОНИРОВАНИЕ</span></h2>
+				<div style="font-size: 0.9em;padding-top: 136px;">
+					<code><span class="Code--blue">var</span> hVec <span class="Code--red">=</span> obj.velo.<span class="Code--blue">transfer</span>(h);</code>
+					<code  class="Code-hidden">obj.pos <span class="Code--red">=</span> obj.pos.<span class="Code--blue">subtract</span>(hVec);</code>
+				</div>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-12">
+				<h2 class="Code-title"><span class="Code--brown">РЕПОЗИЦИОНИРОВАНИЕ</span></h2>
+				<div style="font-size: 0.9em;padding-top: 136px;">
+					<code><span class="Code--blue">var</span> hVec <span class="Code--red">=</span> obj.velo.<span class="Code--blue">transfer</span>(h);</code>
+					<code>obj.pos <span class="Code--red">=</span> obj.pos.<span class="Code--blue">subtract</span>(hVec);</code>
+				</div>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2 class="Slide-title" style="margin-top:-29px;">Изменение скорости</h2>
+			<img style="position:relative; z-index: 1;width: 66%;position: absolute;left: 18%;bottom: 0;" src="pictures/hit08.jpg"/>
+			<div class="floor25"></div>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2 class="Slide-title" style="margin-top:-29px;">Изменение скорости</h2>
+			<img style="width: 487px;position: absolute;right: 33px;top: 203px;" src="pictures/hit10.jpg"/>
+			<img class="Formula--65" src="pictures/formula65.jpg"/>
+			<img class="Formula--66" src="pictures/formula66.jpg"/>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2 class="Slide-title" style="margin-top:-29px;">Изменение скорости</h2>
+			<img style="width: 487px;position: absolute;right: 33px;top: 203px;" src="pictures/hit10.jpg"/>
+			<img class="Formula--65" src="pictures/formula65.jpg"/>
+			<img class="Formula--66" src="pictures/formula66.jpg"/>
+			<img class="Formula--67" src="pictures/formula67.jpg"/>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2 class="Slide-title" style="margin-top:-29px;">Изменение скорости</h2>
+			<img style="width: 487px;position: absolute;right: 33px;top: 203px;" src="pictures/hit10.jpg"/>
+			<img class="Formula--65" src="pictures/formula65.jpg"/>
+			<img class="Formula--66" src="pictures/formula66.jpg"/>
+			<img class="Formula--67" src="pictures/formula67.jpg"/>
+			<img class="Formula--68" src="pictures/formula68.jpg"/>
+		</div>
+	</section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-12">
+				<h2 class="Code-title"><span class="Code--brown">ИЗМЕНЕНИЕ СКОРОСТИ</span></h2>
+				<div style="font-size: 0.85em; padding-top:20px">
+					<code style="margin-bottom:50px;"><span class="Code--blue">var</span> veloProjToDist <span class="Code--red">=</span> obj.velo.<span class="Code--blue">projection</span>(dist);</code>
+					<code class="Code-hidden" style="margin-bottom:50px;"><span class="Code--blue">var</span> normalVelo <span class="Code--red">=</span> dist.<span class="Code--blue">transfer</span>(veloProjToDist);</code>
+					<code class="Code-hidden" style="margin-bottom:50px;"><span class="Code--blue">var</span> tangentVelo <span class="Code--red">=</span> obj.velo.<span class="Code--blue">subtract</span>(normalVelo);</code>
+					<code class="Code-hidden" style="margin-bottom:50px;">obj.velo <span class="Code--red">=</span> tangentVelo.<span class="Code--blue">addScaled</span>(normalVelo,—vfac);</code>
+
+					<img class="Formula--69" src="pictures/formula69.png"/>
+					<!-- img class="Formula--70" src="pictures/formula70.png"/>
+					<img class="Formula--71" src="pictures/formula71.png"/>
+					<img class="Formula--72" src="pictures/formula72.png"/> -->
+				</div>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-12">
+				<h2 class="Code-title"><span class="Code--brown">ИЗМЕНЕНИЕ СКОРОСТИ</span></h2>
+				<div style="font-size: 0.85em; padding-top:20px">
+					<code style="margin-bottom:50px;"><span class="Code--blue">var</span> veloProjToDist <span class="Code--red">=</span> obj.velo.<span class="Code--blue">projection</span>(dist);</code>
+					<code style="margin-bottom:50px;"><span class="Code--blue">var</span> normalVelo <span class="Code--red">=</span> dist.<span class="Code--blue">transfer</span>(veloProjToDist);</code>
+					<code class="Code-hidden" style="margin-bottom:50px;"><span class="Code--blue">var</span> tangentVelo <span class="Code--red">=</span> obj.velo.<span class="Code--blue">subtract</span>(normalVelo);</code>
+					<code class="Code-hidden" style="margin-bottom:50px;">obj.velo <span class="Code--red">=</span> tangentVelo.<span class="Code--blue">addScaled</span>(normalVelo,—vfac);</code>
+
+					<!-- <img class="Formula--69" src="pictures/formula69.png"/> -->
+					<!-- <img class="Formula--70" src="pictures/formula70.png"/> -->
+					<img class="Formula--71" src="pictures/formula71.png"/>
+					<!-- <img class="Formula--72" src="pictures/formula72.png"/> -->
+				</div>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-12">
+				<h2 class="Code-title"><span class="Code--brown">ИЗМЕНЕНИЕ СКОРОСТИ</span></h2>
+				<div style="font-size: 0.85em; padding-top:20px">
+					<code style="margin-bottom:50px;"><span class="Code--blue">var</span> veloProjToDist <span class="Code--red">=</span> obj.velo.<span class="Code--blue">projection</span>(dist);</code>
+					<code style="margin-bottom:50px;"><span class="Code--blue">var</span> normalVelo <span class="Code--red">=</span> dist.<span class="Code--blue">transfer</span>(veloProjToDist);</code>
+					<code style="margin-bottom:50px;"><span class="Code--blue">var</span> tangentVelo <span class="Code--red">=</span> obj.velo.<span class="Code--blue">subtract</span>(normalVelo);</code>
+					<code class="Code-hidden" style="margin-bottom:50px;">obj.velo <span class="Code--red">=</span> tangentVelo.<span class="Code--blue">addScaled</span>(normalVelo,—vfac);</code>
+
+					<!-- <img class="Formula--69" src="pictures/formula69.png"/> -->
+					<img class="Formula--70" src="pictures/formula70.png"/>
+					<!-- <img class="Formula--71" src="pictures/formula71.png"/> -->
+					<!-- <img class="Formula--72" src="pictures/formula72.png"/> -->
+				</div>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-12">
+				<h2 class="Code-title"><span class="Code--brown">ИЗМЕНЕНИЕ СКОРОСТИ</span></h2>
+				<div style="font-size: 0.85em; padding-top:20px">
+					<code style="margin-bottom:50px;"><span class="Code--blue">var</span> veloProjToDist <span class="Code--red">=</span> obj.velo.<span class="Code--blue">projection</span>(dist);</code>
+					<code style="margin-bottom:50px;"><span class="Code--blue">var</span> normalVelo <span class="Code--red">=</span> dist.<span class="Code--blue">transfer</span>(veloProjToDist);</code>
+					<code style="margin-bottom:50px;"><span class="Code--blue">var</span> tangentVelo <span class="Code--red">=</span> obj.velo.<span class="Code--blue">subtract</span>(normalVelo);</code>
+					<code style="margin-bottom:50px;">obj.velo <span class="Code--red">=</span> tangentVelo.<span class="Code--blue">addScaled</span>(normalVelo,—vfac);</code>
+
+					<!-- <img class="Formula--69" src="pictures/formula69.png"/> -->
+					<!-- <img class="Formula--70" src="pictures/formula70.png"/> -->
+					<!-- <img class="Formula--71" src="pictures/formula71.png"/> -->
+					<img class="Formula--72" src="pictures/formula72.png"/>
+				</div>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide SlideExample">
+		<div class="container20 container js-example20">
+			<div class="ball20"></div>
+			<div class="floor40"></div>
+		</div>
+	</section>
+
+	<section class="slide SlideExample">
+		<div class="container21 container js-example21">
+			<div class="ball21"></div>
+			<div class="floor41"></div>
+		</div>
+	</section>
+
+	<section class="slide SlideExample">
+		<div class="container22 container js-example22">
+			<div class="ball22"></div>
+			<div class="floor42"></div>
+		</div>
+	</section>
+
+	<section class="slide SlideExample">
+		<div class="container23 container js-example23">
+			<article class="Story Story--23">
+        		<div class="Story-wrapper Story-wrapper--23">
+            		<section class="Story-introduction Story-slide Story-slide1">
+            			<h1 class="Story-title"> Стихотворение<br>про котёнка</h1>
+            			<br>
+            			<div class="Story-preview"></div>
+            		</section>
+
+		            <section class="Story-part Story-part1 Story-slide Story-slide2">
+		                <p> 
+		                    Как хорошо, когда живёт<br>
+		                    Котёнок в доме вашем.<br>
+		                    Тогда не скучно вам вдвоём<br>
+		                    И мрак ночной не страшен.
+		                </p>
+		                <p> 
+		                    И днём вам радостно играть<br>
+		                    С пушистым непоседой.<br>
+		                    И на диване c ним лежать,<br>
+		                    Вздремнув после обеда.
+		                </p>
+		                <img class="Story-image Story-image1" src="pictures/02.jpg" />
+		                <img class="Story-image Story-image2" src="pictures/03.jpg" />
+		            </section>
+
+		            <section class="Story-part Story-part2  Story-slide Story-slide3">
+		                <p>
+		                    А если в двери постучит<br>
+		                    К вам кто-то незнакомый,<br>
+		                    То вам пугаться ни к чему —<br>
+		                    Ведь не один вы дома.
+		                </p>
+		                <p> 
+		                    Котёнок мягоньким бочком<br>
+		                    К вам ласково прижмётся,<br>
+		                    И вы поймёте — вместе с ним<br>
+		                    Чудеснее живётся!
+		                </p>
+		                <img class="Story-image Story-image1" src="pictures/04.jpg" />
+		                <img class="Story-image Story-image2" src="pictures/06.jpg" />
+		                <img class="Story-image Story-image2" src="pictures/07.jpg" />
+		            </section>
+		        </div>
+	        </article>
+		</div>
+	</section>
+
+	<section class="slide SlideExample">
+		<div class="container24 container js-example24">
+			<div class="Container24"></div>
+			<div class="DescBg">
+				<h1 class="DescBg--title"> Каким видишь<br>свой мир<br>ты?</h1>
+			</div>
+
+		</div>
+	</section>
+
+
+	<section class="slide shout grow SlideTitle SlideTitle--spring">
+		<div>
+			<h2 class="SlideTitle-title">Пружины<br>и колебания</h2>
+		</div>
+	</section>
+
+	<section class="slide slideSwing"></section>
+
+	<section class="slide">
+		<div>
+			<h2 class="Slide-title">ПРОСТОЕ ГАРМОНИЧЕСКОЕ<br>КОЛЕБАНИЕ</h2>
+			<h3 class="TitleSmall" style="width: 293px;text-align: center;">Закон Роберта Гука</h3>
+			<img src="pictures/hooke.png" style="width: 293px;padding-top: 7px;"/>
+			<img src="pictures/spring.png" style="position: absolute;width: 438px;margin-top: -30px;margin-left: 76px;"/>
+			<img class="Formula--27" src="pictures/formula27.png"/>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2 class="Slide-title">Ускорение</h2>
+			<img class="Formula--31" src="pictures/formula31.png"/>
+			<img class="Formula--32" src="pictures/formula32.png"/>
+			<img class="Formula--33" src="pictures/formula33.png"/>
+			<img class="Brace--6" src="pictures/brace2.png" style="width: 839px;top: 271px;position: absolute;left: 83px;"/>
+			<img src="pictures/ballAccel.png" style="position: absolute;width: 367px;bottom: 21px;left: 370px;"/>
+			<h3 class="TitleSmall" style="position: absolute;top: 154px;">Закон Гука</h3>
+			<h3 class="TitleSmall" style="position: absolute;top: 154px;right: 103px;">Второй закон Ньютона</h3>
+		</div>
+	</section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-12">
+				<h2 class="Code-title" style="margin-bottom: 15px;"><span class="Code--brown">РАСЧЕТ СИЛЫ</span></h2>
+				<code><span class="Code--blue">var</span> displ <span class="Code--red">=</span> obj.pos.subtract(center);</code>
+				<code><span class="Code--blue">var</span> restoring <span class="Code--red">=</span> displ.multiply(<span class="Code--red">—</span>kSpring);</code>
+				<code><span class="Code--blue">var</span> damping <span class="Code--red">=</span> obj.velo.multiply(<span class="Code--red">—</span>kDamping);</code>
+				<br>
+				<code>obj.force <span class="Code--red">=</span> Vector.<span class="Code--blue">add</span>([restoring, damping]);</code>
+
+				<img class="Formula--28" src="pictures/formula28.png"/>
+				<img class="Formula--29" src="pictures/formula29.png"/>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide SlideExample">
+		<div class="container6 container js-example6">
+			<div class="ball6"></div>
+			<div class="center6"></div>
+		</div>
+	</section>
+
+	<section class="slide SlideExample">
+		<div class="container7 container js-example7">
+			<div class="Logos">
+				<div class="Logos-images">
+					<div class="Logos-item">
+						<div class="Logos-image" style="background-image: url(pictures/logos/01.jpg)"></div>
+					</div>
+					<div class="Logos-item">
+						<div class="Logos-image" style="background-image: url(pictures/logos/02.jpg)"></div>
+					</div>
+					<div class="Logos-item">
+						<div class="Logos-image" style="background-image: url(pictures/logos/03.jpg)"></div>
+					</div>
+					<div class="Logos-item">
+						<div class="Logos-image" style="background-image: url(pictures/logos/04.jpg)"></div>
+					</div>
+					<div class="Logos-item">
+						<div class="Logos-image" style="background-image: url(pictures/logos/05.jpg)"></div>
+					</div>
+					<div class="Logos-item">
+						<div class="Logos-image" style="background-image: url(pictures/logos/06.jpg)"></div>
+					</div>
+					<div class="Logos-item">
+						<div class="Logos-image" style="background-image: url(pictures/logos/07.jpg)"></div>
+					</div>
+					<div class="Logos-item">
+						<div class="Logos-image" style="background-image: url(pictures/logos/08.jpg)"></div>
+					</div>
+					<div class="Logos-item">
+						<div class="Logos-image" style="background-image: url(pictures/logos/09.jpg)"></div>
+					</div>
+					<div class="Logos-item">
+						<div class="Logos-image" style="background-image: url(pictures/logos/10.jpg)"></div>
+					</div>
+					<div class="Logos-item">
+						<div class="Logos-image" style="background-image: url(pictures/logos/11.jpg)"></div>
+					</div>
+					<div class="Logos-item">
+						<div class="Logos-image" style="background-image: url(pictures/logos/12.jpg)"></div>
+					</div>
+				</div>
+				<div class="Logos-covers">
+                	<div class="Logos-item">
+                    	<div class="Logos-cover">Котенок<br>и собака</div>
+                    </div>
+                    <div class="Logos-item">
+                    	<div class="Logos-cover"><div class="Logos-title">Бабочка</div></div>
+                    </div>
+                    <div class="Logos-item">
+                    	<div class="Logos-cover"><div class="Logos-title">Мышонок</div></div>
+                    </div>
+                    <div class="Logos-item">
+                    	<div class="Logos-cover"><div class="Logos-title">Ежик</div></div>
+                    </div>
+                    <div class="Logos-item">
+                    	<div class="Logos-cover"><div class="Logos-title">Волк</div></div>
+                    </div>
+                    <div class="Logos-item">
+                    	<div class="Logos-cover"><div class="Logos-title">Кролик</div></div>
+                    </div>
+                    <div class="Logos-item">
+                    	<div class="Logos-cover"><div class="Logos-title">Сова</div></div>
+                    </div>
+                    <div class="Logos-item">
+                    	<div class="Logos-cover"><div class="Logos-title">Обезьяна</div></div>
+                    </div>
+                    <div class="Logos-item">
+                    	<div class="Logos-cover"><div class="Logos-title">Котенок</div></div>
+                    </div>
+                    <div class="Logos-item">
+                    	<div class="Logos-cover"><div class="Logos-title">Рысь</div></div>
+                    </div>
+                    <div class="Logos-item">
+                    	<div class="Logos-cover"><div class="Logos-title">Белочка</div></div>
+                    </div>
+                    <div class="Logos-item">
+                    	<div class="Logos-cover"><div class="Logos-title">Жираф<br>и страус</div></div>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</section>
+
+	<section class="slide SlideExample">
+		<div class="container8 container js-example8">
+			<article class="ArticleStory">
+				<h1 class="ArticleStory-title">Хоббит: Нежданное путешествие</h1>
+				<p class="ArticleStory-intro">В&nbsp;первом из&nbsp;трех фильмов, переносящих на&nbsp;экран бессмертный шедевр Дж. Р.&nbsp;Р.&nbsp;Толкеина &laquo;Хоббит&raquo;, его главный герой Бильбо Бэггинс вместе с&nbsp;магом Гэндальфом и&nbsp;тринадцатью гномами под предводительством Торина Дубощита неожиданно для себя самого отправляется в&nbsp;поход, чтобы отвоевать у&nbsp;дракона...</p>
+		    </article>
+		</div>
+	</section>
+
+	<section class="slide SlideExample">
+		<div class="container9 container js-example9">
+			<div class="MovingImage"></div>
+		</div>
+	</section>
+
+	<section class="slide SlideMoreForce" ></section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-14">
+				<h2 class="Code-title"><span class="Code--brown">РАСЧЕТ СИЛЫ КУРСОРА</span></h2>
+				<div class="CodeSize">
+					<code>cursorForce <span class="Code--red">= new</span> Vector(<span class="Code--purple">0</span>, <span class="Code--purple">0</span>);</code>
+
+					<code class="Code-hidden"><span class="Code--blue">if</span> (cursorPos.x <span class="Code--red">>=</span> <span class="Code--purple">0</span>) {</code>
+					<code class="Code-hidden">	displCursor <span class="Code--red">=</span> obj.pos.<span class="Code--blue">subtract</span>(cursorPos);</code>
+					<code class="Code-hidden">	cursorDist <span class="Code--red">=</span> displCursor.<span class="Code--blue">length</span>();</code>
+
+					<code class="Code-hidden">	<span class="Code--blue">if</span> (cursorDist <span class="Code--red">></span> 1 <span class="Code--red">&&</span> </code>
+					<code class="Code-hidden">		cursorDist <span class="Code--red"><=</span> cursorForceZoomed) {</code>
+							    
+					<code class="Code-hidden">		<span class="Code--blue">var</span> func <span class="Code--red">=</span> cursorForceZoomed <span class="Code--red">/</span> </code>
+					<code class="Code-hidden">					(cursorDist <span class="Code--red">*</span> cursorDist);</code>
+					<code class="Code-hidden">		cursorForce <span class="Code--red">=</span> displCursor.multiply(func);</code>
+					<code class="Code-hidden">	}</code>
+					<code class="Code-hidden">}</code>
+				</div>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-14">
+				<h2 class="Code-title"><span class="Code--brown">РАСЧЕТ СИЛЫ КУРСОРА</span></h2>
+				<div class="CodeSize">
+					<code class="Code-hidden">cursorForce <span class="Code--red">= new</span> Vector(<span class="Code--purple">0</span>, <span class="Code--purple">0</span>);</code>
+
+					<code><span class="Code--blue">if</span> (cursorPos.x <span class="Code--red">>=</span> <span class="Code--purple">0</span>) {</code>
+					<code>	displCursor <span class="Code--red">=</span> obj.pos.<span class="Code--blue">subtract</span>(cursorPos);</code>
+					<code>	cursorDist <span class="Code--red">=</span> displCursor.<span class="Code--blue">length</span>();</code>
+
+					<code class="Code-hidden">	<span class="Code--blue">if</span> (cursorDist <span class="Code--red">></span> 1 <span class="Code--red">&&</span> </code>
+					<code class="Code-hidden">		cursorDist <span class="Code--red"><=</span> cursorForceZoomed) {</code>
+							    
+					<code class="Code-hidden">		<span class="Code--blue">var</span> func <span class="Code--red">=</span> cursorForceZoomed <span class="Code--red">/</span> </code>
+					<code class="Code-hidden">					(cursorDist <span class="Code--red">*</span> cursorDist);</code>
+					<code class="Code-hidden">		cursorForce <span class="Code--red">=</span> displCursor.multiply(func);</code>
+					<code class="Code-hidden">	}</code>
+					<code>}</code>
+				</div>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-14">
+				<h2 class="Code-title"><span class="Code--brown">РАСЧЕТ СИЛЫ КУРСОРА</span></h2>
+				<div class="CodeSize">
+					<code class="Code-hidden">cursorForce <span class="Code--red">= new</span> Vector(<span class="Code--purple">0</span>, <span class="Code--purple">0</span>);</code>
+
+					<code><span class="Code--blue">if</span> (cursorPos.x <span class="Code--red">>=</span> <span class="Code--purple">0</span>) {</code>
+					<code>	displCursor <span class="Code--red">=</span> obj.pos.<span class="Code--blue">subtract</span>(cursorPos);</code>
+					<code>	cursorDist <span class="Code--red">=</span> displCursor.<span class="Code--blue">length</span>();</code>
+
+					<code>	<span class="Code--blue">if</span> (cursorDist <span class="Code--red">></span> 1 <span class="Code--red">&&</span> </code>
+					<code>		cursorDist <span class="Code--red"><=</span> cursorForceZoomed) {</code>
+							    
+					<code class="Code-hidden">		<span class="Code--blue">var</span> func <span class="Code--red">=</span> cursorForceZoomed <span class="Code--red">/</span> </code>
+					<code class="Code-hidden">					(cursorDist <span class="Code--red">*</span> cursorDist);</code>
+					<code class="Code-hidden">		cursorForce <span class="Code--red">=</span> displCursor.multiply(func);</code>
+					<code>	}</code>
+					<code>}</code>
+
+				</div>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-14">
+				<h2 class="Code-title"><span class="Code--brown">РАСЧЕТ СИЛЫ КУРСОРА</span></h2>
+				<div class="CodeSize">
+					<code class="Code-hidden">cursorForce <span class="Code--red">= new</span> Vector(<span class="Code--purple">0</span>, <span class="Code--purple">0</span>);</code>
+
+					<code class="Code-hidden"><span class="Code--blue">if</span> (cursorPos.x <span class="Code--red">>=</span> <span class="Code--purple">0</span>) {</code>
+					<code class="Code-hidden">	displCursor <span class="Code--red">=</span> obj.pos.<span class="Code--blue">subtract</span>(cursorPos);</code>
+					<code class="Code-hidden">	cursorDist <span class="Code--red">=</span> displCursor.<span class="Code--blue">length</span>();</code>
+
+					<code class="Code-hidden">	<span class="Code--blue">if</span> (cursorDist <span class="Code--red">></span> 1 <span class="Code--red">&&</span> </code>
+					<code class="Code-hidden">		cursorDist <span class="Code--red"><=</span> cursorForceZoomed) {</code>
+							    
+					<code>		<span class="Code--blue">var</span> func <span class="Code--red">=</span> cursorForceZoomed <span class="Code--red">/</span> </code>
+					<code>					(cursorDist <span class="Code--red">*</span> cursorDist);</code>
+					<code>		cursorForce <span class="Code--red">=</span> displCursor.multiply(func);</code>
+					<code class="Code-hidden">	}</code>
+					<code class="Code-hidden">}</code>
+
+					<img class="Formula--80" src="pictures/formula80.png"/>
+				</div>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-14">
+				<h2 class="Code-title"><span class="Code--brown">РАСЧЕТ СИЛЫ КУРСОРА</span></h2>
+				<div class="CodeSize">
+					<code>cursorForce <span class="Code--red">= new</span> Vector(<span class="Code--purple">0</span>, <span class="Code--purple">0</span>);</code>
+
+					<code><span class="Code--blue">if</span> (cursorPos.x <span class="Code--red">>=</span> <span class="Code--purple">0</span>) {</code>
+					<code>	displCursor <span class="Code--red">=</span> obj.pos.<span class="Code--blue">subtract</span>(cursorPos);</code>
+					<code>	cursorDist <span class="Code--red">=</span> displCursor.<span class="Code--blue">length</span>();</code>
+
+					<code>	<span class="Code--blue">if</span> (cursorDist <span class="Code--red">></span> 1 <span class="Code--red">&&</span> </code>
+					<code>		cursorDist <span class="Code--red"><=</span> cursorForceZoomed) {</code>
+							    
+					<code>		<span class="Code--blue">var</span> func <span class="Code--red">=</span> cursorForceZoomed <span class="Code--red">/</span> </code>
+					<code>					(cursorDist <span class="Code--red">*</span> cursorDist);</code>
+					<code>		cursorForce <span class="Code--red">=</span> displCursor.multiply(func);</code>
+					<code>	}</code>
+					<code>}</code>
+
+					<img class="Formula--80" src="pictures/formula80.png"/>
+				</div>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide SlideExample">
+		<div class="container10 container js-example10">
+			<div class="BgCollapse"></div>
+			<div class="SquaresCollapse"></div>
+		</div>
+	</section>
+
+	<section class="slide SlideFooter">
+		<div>
+			<h1 class="SlideFooter-title">Иванова Елена</h1>
+			<div class="SlideFooter-twitter"><a href="https://twitter.com/liveldi90" target="_blank" class="SlideFooter-link">@liveldi90</a></div>
+
+			<div class="SlideFooter-demos"><a href="https://physicsdemos.liveldi.ru" target="_blank" class="SlideHeader-link">github.com/elena90/presentationPhysics</a></div>
+
+			<img class="SlideFooter-logoPresentation" src="pictures/logo-presentation.png" />
+		</div>
+	</section>
+
+	<p class="badge"><a href="https://github.com/shower/shower">Fork me on Github</a></p>
+	<div class="progress"><div></div></div>
+	<script src="js/libs.min.js"></script>
+	<script src="js/vars.js"></script>
+	<script src="../shower-core/shower.min.js"></script>
+	<script src="js/movingBall.js"></script>
+	<script src="js/frictionBall.js"></script>
+	<script src="js/frictionHorisontalScroll.js"></script>
+	<script src="js/frictionHorisontalArrow.js"></script>
+	<script src="js/acceleratingBall.js"></script>
+	<script src="js/springDamping.js"></script>
+	<script src="js/movingImage.js"></script>
+	<script src="js/logos.js"></script>
+	<script src="js/windowSpring.js"></script>
+	<script src="js/movingObjects.js"></script>
+	<script src="js/bouncing01.js"></script>
+	<script src="js/bouncing02.js"></script>
+	<script src="js/bouncing03.js"></script>
+	<script src="js/bouncingGallery.js"></script>
+	<script src="js/bubble.js"></script>
+	<!-- Copyright © 2013 Yours Truly, Famous Inc. -->
+</body>
+</html>
