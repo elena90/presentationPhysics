@@ -429,6 +429,13 @@
     right: 24px;
 }
 
+.Formula--90 {
+    position: absolute;
+    width: 286px;
+    right: 39px;
+    top: 187px;
+}
+
 .Formula--14 {
     display: block;
     position: absolute;
@@ -571,17 +578,17 @@
 }
 
 .Formula--41 {
-    width: 432px;
+    width: 259px;
     position: absolute;
-    right: 43px;
-    top: 222px;
+    right: 207px;
+    top: 201px;
 }
 
 .Formula--42 {
-    width: 312px;
+    width: 287px;
     position: absolute;
-    right: 147px;
-    top: 294px;
+    right: 168px;
+    top: 307px;
 }
 
 .Formula--43 {
@@ -606,10 +613,10 @@
 }
 
 .Formula--47 {
-    width: 319px;
+    width: 225px;
     position: absolute;
-    top: 330px;
-    right: 36px;
+    top: 275px;
+    right: 133px;
 }
 
 .Formula--48 {
@@ -627,10 +634,10 @@
 }
 
 .Formula--51 {
-    width: 311px;
+    width: 225px;
     position: absolute;
-    top: 383px;
-    right: 36px;
+    top: 373px;
+    right: 133px;
 }
 
 .Formula--52 {
@@ -684,8 +691,8 @@
 
 .Formula--65 {
     position: absolute;
-    width: 370px;
-    top: 172px;
+    width: 241px;
+    top: 126px;
     left: 100px;
 }
 
@@ -712,8 +719,8 @@
 
 .Formula--69 {
     position: absolute;
-    top: 223px;
-    width: 405px;
+    top: 198px;
+    width: 247px;
     right: 50px;
 }
 
@@ -1031,7 +1038,7 @@
     height: 50px;
     background: rgb(0, 102, 153);
     position: absolute;
-    bottom: 82px;
+    bottom: 86px;
     left: 70px;
     -webkit-transform: rotate(-15deg);
     transform: rotate(-15deg);
@@ -1406,7 +1413,10 @@
     cursor:pointer;
 }
 
-
+.HitList {
+    padding-top: 50px;
+    font-size: 1.8em;
+}
 
 
 

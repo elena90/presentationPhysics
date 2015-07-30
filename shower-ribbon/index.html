@@ -87,13 +87,14 @@
 
 				<code><span class="Code--blue">function</span> <span class="Code--green">onTimer</span>() {</code>
 				<code>	<span class="Code--blue">var</span> t1 <span class="Code--red">=</span> <span class="Code--red">new</span> Date().<span class="Code--blue">getTime</span>();</code>
-				<code>	dt <span class="Code--red">=</span> (t1 <span class="Code--red">—</span> t0) <span class="Code--red">*</span> kSmothing ;</code>
+				<code>	dt <span class="Code--red">=</span> (t1 <span class="Code--red">—</span> t0) <span class="Code--red">*</span> kSmooth ;</code>
 				<code>	t0 <span class="Code--red">=</span> t1;</code>
 				<code>	<span class="Code--gray">// Меняем кадры</span></code>
 				<code>}</code>
 			</pre>
 		</div>
 	</section>
+
 	<section class="slide shout grow SlideTitle SlideTitle--constructors">
 		<div>
 			<h2 class="SlideTitle-title">Конструкторы</h2>
@@ -520,6 +521,17 @@
 
 	<section class="slide">
 		<div>
+			<h2 class="Slide-title">Удары о поверхность:<br>задачи</h2>
+			<ul class="HitList">
+				<li class="HitItem">Зафиксировать удар</li>
+				<li class="HitItem">Залипания</li>
+				<li class="HitItem">Коррекция скорости</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
 			<h2 class="Slide-title">Фиксация удара</h2>
 			<img style="width: 61.5%;position: absolute;" src="pictures/hit02.jpg"/>
 			<div class="floor22"></div>
@@ -538,9 +550,8 @@
 	<section class="slide">
 		<div>
 			<h2 class="Slide-title">Фиксация удара</h2>
-			<img style="width: 69.5%;position: absolute;left: 30px;bottom: 41px;" src="pictures/hit03.jpg"/>
+			<img style="width: 69.5%;position: absolute;left: 30px;bottom: 41px;" src="pictures/hit031.jpg"/>
 			<div class="floor23"></div>
-			<img class="Formula--40" src="pictures/formula40.png"/>
 			<img class="Formula--44" src="pictures/formula44.png"/>
 		</div>
 	</section>
@@ -548,7 +559,19 @@
 	<section class="slide">
 		<div>
 			<h2 class="Slide-title">Фиксация удара</h2>
-			<img style="width: 69.5%;position: absolute;left: 30px;bottom: 41px;" src="pictures/hit03.jpg"/>
+			<img style="width: 69.5%;position: absolute;left: 30px;bottom: 41px;" src="pictures/hit031.jpg"/>
+			<div class="floor23"></div>
+			<img class="Formula--40" src="pictures/formula40.png"/>
+			<img class="Formula--44" src="pictures/formula44.png"/>
+		</div>
+	</section>
+
+
+
+	<section class="slide">
+		<div>
+			<h2 class="Slide-title">Фиксация удара</h2>
+			<img style="width: 69.5%;position: absolute;left: 30px;bottom: 41px;" src="pictures/hit031.jpg"/>
 			<div class="floor23"></div>
 			<img class="Formula--40" src="pictures/formula40.png"/>
 			<img class="Formula--41" src="pictures/formula41.png"/>
@@ -560,13 +583,23 @@
 	<section class="slide">
 		<div>
 			<h2 class="Slide-title">Фиксация удара</h2>
-			<img style="width: 69.5%;position: absolute;left: 30px;bottom: 41px;" src="pictures/hit03.jpg"/>
+			<img style="width: 69.5%;position: absolute;left: 30px;bottom: 41px;" src="pictures/hit031.jpg"/>
 			<div class="floor23"></div>
 			<img class="Formula--40" src="pictures/formula40.png"/>
 			<img class="Formula--41" src="pictures/formula41.png"/>
 			<img class="Formula--42" src="pictures/formula42.png"/>
 			<img class="Formula--43" src="pictures/formula43.png"/>
 			<img class="Formula--44" src="pictures/formula44.png"/>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2 class="Slide-title">Фиксация удара</h2>
+			<img style="width: 69.5%;position: absolute;left: 30px;bottom: 41px;" src="pictures/hit032.jpg"/>
+			<img class="Formula--44" src="pictures/formula44.png"/>
+			<img class="Formula--90" src="pictures/formula90.jpg"/>
+			<div class="floor23"></div>
 		</div>
 	</section>
 
@@ -672,45 +705,9 @@
 				<h2 class="Code-title"><span class="Code--brown">РАССТОЯНИЕ ДО УДАРА</span></h2>
 				<div style="font-size: 0.9em;padding-top: 46px;">
 					<code style="margin-bottom: 20px;"><span class="Code--blue">var</span> floorLen <span class="Code--red">=</span> floor.<span class="Code--blue">length</span>();</code>
-					<code class="Code-hidden"><span class="Code--blue">var</span> test <span class="Code--red">=</span> ((<span class="Code--blue">Math</span>.<span class="Code--blue">abs</span>(b1Len ) <span class="Code--red"><</span> floorLen) <span class="Code--red">&&</span></code>
+					<code><span class="Code--blue">var</span> test <span class="Code--red">=</span> ((<span class="Code--blue">Math</span>.<span class="Code--blue">abs</span>(b1Len) <span class="Code--red"><=</span> floorLen) <span class="Code--red">&&</span></code>
 
-					<code class="Code-hidden" style="margin-bottom: 20px;">			(<span class="Code--blue">Math</span>.<span class="Code--blue">abs</span>(b2Len ) <span class="Code--red"><</span> floorLen))</code>
-			
-					<code class="Code-hidden"><span class="Code--blue">if</span> ((dist.<span class="Code--blue">length</span>() <span class="Code--red"><=</span> obj.radius) <span class="Code--red">&&</span> test) {</code>
-					<code class="Code-hidden">	…</code>
-					<code class="Code-hidden">}</code>
-				</div>
-			</pre>
-		</div>
-	</section>
-
-	<section class="slide SlideCode">
-		<div class="Code">
-			<pre class="Code-12">
-				<h2 class="Code-title"><span class="Code--brown">РАССТОЯНИЕ ДО УДАРА</span></h2>
-				<div style="font-size: 0.9em;padding-top: 46px;">
-					<code style="margin-bottom: 20px;"><span class="Code--blue">var</span> floorLen <span class="Code--red">=</span> floor.<span class="Code--blue">length</span>();</code>
-					<code><span class="Code--blue">var</span> test <span class="Code--red">=</span> ((<span class="Code--blue">Math</span>.<span class="Code--blue">abs</span>(b1Len ) <span class="Code--red"><</span> floorLen) <span class="Code--red">&&</span></code>
-
-					<code style="margin-bottom: 20px;">			(<span class="Code--blue">Math</span>.<span class="Code--blue">abs</span>(b2Len ) <span class="Code--red"><</span> floorLen))</code>
-			
-					<code class="Code-hidden"><span class="Code--blue">if</span> ((dist.<span class="Code--blue">length</span>() <span class="Code--red"><=</span> obj.radius) <span class="Code--red">&&</span> test) {</code>
-					<code class="Code-hidden">	…</code>
-					<code class="Code-hidden">}</code>
-				</div>
-			</pre>
-		</div>
-	</section>
-
-	<section class="slide SlideCode">
-		<div class="Code">
-			<pre class="Code-12">
-				<h2 class="Code-title"><span class="Code--brown">РАССТОЯНИЕ ДО УДАРА</span></h2>
-				<div style="font-size: 0.9em;padding-top: 46px;">
-					<code style="margin-bottom: 20px;"><span class="Code--blue">var</span> floorLen <span class="Code--red">=</span> floor.<span class="Code--blue">length</span>();</code>
-					<code><span class="Code--blue">var</span> test <span class="Code--red">=</span> ((<span class="Code--blue">Math</span>.<span class="Code--blue">abs</span>(b1Len ) <span class="Code--red"><</span> floorLen) <span class="Code--red">&&</span></code>
-
-					<code style="margin-bottom: 20px;">			(<span class="Code--blue">Math</span>.<span class="Code--blue">abs</span>(b2Len ) <span class="Code--red"><</span> floorLen))</code>
+					<code style="margin-bottom: 20px;">			(<span class="Code--blue">Math</span>.<span class="Code--blue">abs</span>(b2Len) <span class="Code--red"><=</span> floorLen))</code>
 			
 					<code><span class="Code--blue">if</span> ((dist.<span class="Code--blue">length</span>() <span class="Code--red"><=</span> obj.radius) <span class="Code--red">&&</span> test) {</code>
 					<code>	…</code>
@@ -1316,7 +1313,7 @@
 			<h1 class="SlideFooter-title">Иванова Елена</h1>
 			<div class="SlideFooter-twitter"><a href="https://twitter.com/liveldi90" target="_blank" class="SlideFooter-link">@liveldi90</a></div>
 
-			<div class="SlideFooter-demos"><a href="https://physicsdemos.liveldi.ru" target="_blank" class="SlideHeader-link">github.com/elena90/presentationPhysics</a></div>
+			<div class="SlideFooter-demos"><a href="https://physicsdemos.liveldi.ru" target="_blank" class="SlideHeader-link">physicsdemos2.liveldi.ru</a></div>
 
 			<img class="SlideFooter-logoPresentation" src="pictures/logo-presentation.png" />
 		</div>
