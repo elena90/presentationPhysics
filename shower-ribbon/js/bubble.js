@@ -96,7 +96,7 @@ function startExample24() {
             obj.pos = new Vector(Math.random() * (winW - 2 * obj.radius) + obj.radius,
                                  Math.random() * (winH - 2 * obj.radius) + obj.radius);
 
-            obj.velo = new Vector((Math.random() * 30), (Math.random() * 30));
+            obj.velo = new Vector(getRandomInt(10, 50), getRandomInt(10, 50));
 
             $container.append($obj);
             $obj
@@ -207,13 +207,13 @@ function startExample24() {
 
                 obj.pos = obj.pos.subtract(deltaSVec);
 
-                var vcor = 1 - dist.dotProduct(deltaSVec) / obj.velo.lengthSquared();
-                var Velo = obj.velo.multiply(vcor);
+                // var vcor = 1 - dist.dotProduct(deltaSVec) / obj.velo.lengthSquared();
+                // var Velo = obj.velo.multiply(vcor);
 
-                var veloProjToDist = Velo.projection(dist);
+                var veloProjToDist = obj.velo.projection(dist);
 
                 var normalVelo = dist.transfer(veloProjToDist);
-                var tangentVelo = Velo.subtract(normalVelo);
+                var tangentVelo = obj.velo.subtract(normalVelo);
                 obj.velo = tangentVelo.addScaled(normalVelo, -keLoss);
             }
         }
