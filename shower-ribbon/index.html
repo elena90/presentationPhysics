@@ -1175,139 +1175,141 @@
 		</div>
 	</section>
 
-	<section class="slide SlideMoreForce" ></section>
-
-	<section class="slide SlideCode">
-		<div class="Code">
-			<pre class="Code-14">
-				<h2 class="Code-title"><span class="Code--brown">РАСЧЕТ СИЛЫ КУРСОРА</span></h2>
-				<div class="CodeSize">
-					<code>cursorForce <span class="Code--red">= new</span> Vector(<span class="Code--purple">0</span>, <span class="Code--purple">0</span>);</code>
-
-					<code class="Code-hidden"><span class="Code--blue">if</span> (cursorPos.x <span class="Code--red">>=</span> <span class="Code--purple">0</span>) {</code>
-					<code class="Code-hidden">	displCursor <span class="Code--red">=</span> obj.pos.<span class="Code--blue">subtract</span>(cursorPos);</code>
-					<code class="Code-hidden">	cursorDist <span class="Code--red">=</span> displCursor.<span class="Code--blue">length</span>();</code>
-
-					<code class="Code-hidden">	<span class="Code--blue">if</span> (cursorDist <span class="Code--red">></span> 1 <span class="Code--red">&&</span> </code>
-					<code class="Code-hidden">		cursorDist <span class="Code--red"><=</span> cursorForceZoomed) {</code>
-							    
-					<code class="Code-hidden">		<span class="Code--blue">var</span> func <span class="Code--red">=</span> cursorForceZoomed <span class="Code--red">/</span> </code>
-					<code class="Code-hidden">					(cursorDist <span class="Code--red">*</span> cursorDist);</code>
-					<code class="Code-hidden">		cursorForce <span class="Code--red">=</span> displCursor.multiply(func);</code>
-					<code class="Code-hidden">	}</code>
-					<code class="Code-hidden">}</code>
-				</div>
-			</pre>
-		</div>
-	</section>
-
-	<section class="slide SlideCode">
-		<div class="Code">
-			<pre class="Code-14">
-				<h2 class="Code-title"><span class="Code--brown">РАСЧЕТ СИЛЫ КУРСОРА</span></h2>
-				<div class="CodeSize">
-					<code class="Code-hidden">cursorForce <span class="Code--red">= new</span> Vector(<span class="Code--purple">0</span>, <span class="Code--purple">0</span>);</code>
-
-					<code><span class="Code--blue">if</span> (cursorPos.x <span class="Code--red">>=</span> <span class="Code--purple">0</span>) {</code>
-					<code>	displCursor <span class="Code--red">=</span> obj.pos.<span class="Code--blue">subtract</span>(cursorPos);</code>
-					<code>	cursorDist <span class="Code--red">=</span> displCursor.<span class="Code--blue">length</span>();</code>
-
-					<code class="Code-hidden">	<span class="Code--blue">if</span> (cursorDist <span class="Code--red">></span> 1 <span class="Code--red">&&</span> </code>
-					<code class="Code-hidden">		cursorDist <span class="Code--red"><=</span> cursorForceZoomed) {</code>
-							    
-					<code class="Code-hidden">		<span class="Code--blue">var</span> func <span class="Code--red">=</span> cursorForceZoomed <span class="Code--red">/</span> </code>
-					<code class="Code-hidden">					(cursorDist <span class="Code--red">*</span> cursorDist);</code>
-					<code class="Code-hidden">		cursorForce <span class="Code--red">=</span> displCursor.multiply(func);</code>
-					<code class="Code-hidden">	}</code>
-					<code>}</code>
-				</div>
-			</pre>
-		</div>
-	</section>
-
-	<section class="slide SlideCode">
-		<div class="Code">
-			<pre class="Code-14">
-				<h2 class="Code-title"><span class="Code--brown">РАСЧЕТ СИЛЫ КУРСОРА</span></h2>
-				<div class="CodeSize">
-					<code class="Code-hidden">cursorForce <span class="Code--red">= new</span> Vector(<span class="Code--purple">0</span>, <span class="Code--purple">0</span>);</code>
-
-					<code><span class="Code--blue">if</span> (cursorPos.x <span class="Code--red">>=</span> <span class="Code--purple">0</span>) {</code>
-					<code>	displCursor <span class="Code--red">=</span> obj.pos.<span class="Code--blue">subtract</span>(cursorPos);</code>
-					<code>	cursorDist <span class="Code--red">=</span> displCursor.<span class="Code--blue">length</span>();</code>
-
-					<code>	<span class="Code--blue">if</span> (cursorDist <span class="Code--red">></span> 1 <span class="Code--red">&&</span> </code>
-					<code>		cursorDist <span class="Code--red"><=</span> cursorForceZoomed) {</code>
-							    
-					<code class="Code-hidden">		<span class="Code--blue">var</span> func <span class="Code--red">=</span> cursorForceZoomed <span class="Code--red">/</span> </code>
-					<code class="Code-hidden">					(cursorDist <span class="Code--red">*</span> cursorDist);</code>
-					<code class="Code-hidden">		cursorForce <span class="Code--red">=</span> displCursor.multiply(func);</code>
-					<code>	}</code>
-					<code>}</code>
-
-				</div>
-			</pre>
-		</div>
-	</section>
-
-	<section class="slide SlideCode">
-		<div class="Code">
-			<pre class="Code-14">
-				<h2 class="Code-title"><span class="Code--brown">РАСЧЕТ СИЛЫ КУРСОРА</span></h2>
-				<div class="CodeSize">
-					<code class="Code-hidden">cursorForce <span class="Code--red">= new</span> Vector(<span class="Code--purple">0</span>, <span class="Code--purple">0</span>);</code>
-
-					<code class="Code-hidden"><span class="Code--blue">if</span> (cursorPos.x <span class="Code--red">>=</span> <span class="Code--purple">0</span>) {</code>
-					<code class="Code-hidden">	displCursor <span class="Code--red">=</span> obj.pos.<span class="Code--blue">subtract</span>(cursorPos);</code>
-					<code class="Code-hidden">	cursorDist <span class="Code--red">=</span> displCursor.<span class="Code--blue">length</span>();</code>
-
-					<code class="Code-hidden">	<span class="Code--blue">if</span> (cursorDist <span class="Code--red">></span> 1 <span class="Code--red">&&</span> </code>
-					<code class="Code-hidden">		cursorDist <span class="Code--red"><=</span> cursorForceZoomed) {</code>
-							    
-					<code>		<span class="Code--blue">var</span> func <span class="Code--red">=</span> cursorForceZoomed <span class="Code--red">/</span> </code>
-					<code>					(cursorDist <span class="Code--red">*</span> cursorDist);</code>
-					<code>		cursorForce <span class="Code--red">=</span> displCursor.multiply(func);</code>
-					<code class="Code-hidden">	}</code>
-					<code class="Code-hidden">}</code>
-
-					<img class="Formula--80" src="pictures/formula80.png"/>
-				</div>
-			</pre>
-		</div>
-	</section>
-
-	<section class="slide SlideCode">
-		<div class="Code">
-			<pre class="Code-14">
-				<h2 class="Code-title"><span class="Code--brown">РАСЧЕТ СИЛЫ КУРСОРА</span></h2>
-				<div class="CodeSize">
-					<code>cursorForce <span class="Code--red">= new</span> Vector(<span class="Code--purple">0</span>, <span class="Code--purple">0</span>);</code>
-
-					<code><span class="Code--blue">if</span> (cursorPos.x <span class="Code--red">>=</span> <span class="Code--purple">0</span>) {</code>
-					<code>	displCursor <span class="Code--red">=</span> obj.pos.<span class="Code--blue">subtract</span>(cursorPos);</code>
-					<code>	cursorDist <span class="Code--red">=</span> displCursor.<span class="Code--blue">length</span>();</code>
-
-					<code>	<span class="Code--blue">if</span> (cursorDist <span class="Code--red">></span> 1 <span class="Code--red">&&</span> </code>
-					<code>		cursorDist <span class="Code--red"><=</span> cursorForceZoomed) {</code>
-							    
-					<code>		<span class="Code--blue">var</span> func <span class="Code--red">=</span> cursorForceZoomed <span class="Code--red">/</span> </code>
-					<code>					(cursorDist <span class="Code--red">*</span> cursorDist);</code>
-					<code>		cursorForce <span class="Code--red">=</span> displCursor.multiply(func);</code>
-					<code>	}</code>
-					<code>}</code>
-
-					<img class="Formula--80" src="pictures/formula80.png"/>
-				</div>
-			</pre>
-		</div>
-	</section>
-
 	<section class="slide SlideExample">
 		<div class="container10 container js-example10">
 			<div class="BgCollapse"></div>
 			<div class="SquaresCollapse"></div>
 		</div>
 	</section>
+
+	<!-- <section class="slide SlideMoreForce" ></section> -->
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-14">
+				<h2 class="Code-title"><span class="Code--brown">РАСЧЕТ СИЛЫ КУРСОРА</span></h2>
+				<div class="CodeSize">
+					<code>cursorForce <span class="Code--red">= new</span> Vector(<span class="Code--purple">0</span>, <span class="Code--purple">0</span>);</code>
+
+					<code class="Code-hidden"><span class="Code--blue">if</span> (cursorPos.x <span class="Code--red">>=</span> <span class="Code--purple">0</span>) {</code>
+					<code class="Code-hidden">	displCursor <span class="Code--red">=</span> obj.pos.<span class="Code--blue">subtract</span>(cursorPos);</code>
+					<code class="Code-hidden">	cursorDist <span class="Code--red">=</span> displCursor.<span class="Code--blue">length</span>();</code>
+
+					<code class="Code-hidden">	<span class="Code--blue">if</span> (cursorDist <span class="Code--red">></span> 1 <span class="Code--red">&&</span> </code>
+					<code class="Code-hidden">		cursorDist <span class="Code--red"><=</span> cursorForceZoomed) {</code>
+							    
+					<code class="Code-hidden">		<span class="Code--blue">var</span> func <span class="Code--red">=</span> cursorForceZoomed <span class="Code--red">/</span> </code>
+					<code class="Code-hidden">					(cursorDist <span class="Code--red">*</span> cursorDist);</code>
+					<code class="Code-hidden">		cursorForce <span class="Code--red">=</span> displCursor.multiply(func);</code>
+					<code class="Code-hidden">	}</code>
+					<code class="Code-hidden">}</code>
+				</div>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-14">
+				<h2 class="Code-title"><span class="Code--brown">РАСЧЕТ СИЛЫ КУРСОРА</span></h2>
+				<div class="CodeSize">
+					<code class="Code-hidden">cursorForce <span class="Code--red">= new</span> Vector(<span class="Code--purple">0</span>, <span class="Code--purple">0</span>);</code>
+
+					<code><span class="Code--blue">if</span> (cursorPos.x <span class="Code--red">>=</span> <span class="Code--purple">0</span>) {</code>
+					<code>	displCursor <span class="Code--red">=</span> obj.pos.<span class="Code--blue">subtract</span>(cursorPos);</code>
+					<code>	cursorDist <span class="Code--red">=</span> displCursor.<span class="Code--blue">length</span>();</code>
+
+					<code class="Code-hidden">	<span class="Code--blue">if</span> (cursorDist <span class="Code--red">></span> 1 <span class="Code--red">&&</span> </code>
+					<code class="Code-hidden">		cursorDist <span class="Code--red"><=</span> cursorForceZoomed) {</code>
+							    
+					<code class="Code-hidden">		<span class="Code--blue">var</span> func <span class="Code--red">=</span> cursorForceZoomed <span class="Code--red">/</span> </code>
+					<code class="Code-hidden">					(cursorDist <span class="Code--red">*</span> cursorDist);</code>
+					<code class="Code-hidden">		cursorForce <span class="Code--red">=</span> displCursor.multiply(func);</code>
+					<code class="Code-hidden">	}</code>
+					<code>}</code>
+				</div>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-14">
+				<h2 class="Code-title"><span class="Code--brown">РАСЧЕТ СИЛЫ КУРСОРА</span></h2>
+				<div class="CodeSize">
+					<code class="Code-hidden">cursorForce <span class="Code--red">= new</span> Vector(<span class="Code--purple">0</span>, <span class="Code--purple">0</span>);</code>
+
+					<code><span class="Code--blue">if</span> (cursorPos.x <span class="Code--red">>=</span> <span class="Code--purple">0</span>) {</code>
+					<code>	displCursor <span class="Code--red">=</span> obj.pos.<span class="Code--blue">subtract</span>(cursorPos);</code>
+					<code>	cursorDist <span class="Code--red">=</span> displCursor.<span class="Code--blue">length</span>();</code>
+
+					<code>	<span class="Code--blue">if</span> (cursorDist <span class="Code--red">></span> 1 <span class="Code--red">&&</span> </code>
+					<code>		cursorDist <span class="Code--red"><=</span> cursorForceZoomed) {</code>
+							    
+					<code class="Code-hidden">		<span class="Code--blue">var</span> func <span class="Code--red">=</span> cursorForceZoomed <span class="Code--red">/</span> </code>
+					<code class="Code-hidden">					(cursorDist <span class="Code--red">*</span> cursorDist);</code>
+					<code class="Code-hidden">		cursorForce <span class="Code--red">=</span> displCursor.multiply(func);</code>
+					<code>	}</code>
+					<code>}</code>
+
+				</div>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-14">
+				<h2 class="Code-title"><span class="Code--brown">РАСЧЕТ СИЛЫ КУРСОРА</span></h2>
+				<div class="CodeSize">
+					<code class="Code-hidden">cursorForce <span class="Code--red">= new</span> Vector(<span class="Code--purple">0</span>, <span class="Code--purple">0</span>);</code>
+
+					<code class="Code-hidden"><span class="Code--blue">if</span> (cursorPos.x <span class="Code--red">>=</span> <span class="Code--purple">0</span>) {</code>
+					<code class="Code-hidden">	displCursor <span class="Code--red">=</span> obj.pos.<span class="Code--blue">subtract</span>(cursorPos);</code>
+					<code class="Code-hidden">	cursorDist <span class="Code--red">=</span> displCursor.<span class="Code--blue">length</span>();</code>
+
+					<code class="Code-hidden">	<span class="Code--blue">if</span> (cursorDist <span class="Code--red">></span> 1 <span class="Code--red">&&</span> </code>
+					<code class="Code-hidden">		cursorDist <span class="Code--red"><=</span> cursorForceZoomed) {</code>
+							    
+					<code>		<span class="Code--blue">var</span> func <span class="Code--red">=</span> cursorForceZoomed <span class="Code--red">/</span> </code>
+					<code>					(cursorDist <span class="Code--red">*</span> cursorDist);</code>
+					<code>		cursorForce <span class="Code--red">=</span> displCursor.multiply(func);</code>
+					<code class="Code-hidden">	}</code>
+					<code class="Code-hidden">}</code>
+
+					<img class="Formula--80" src="pictures/formula80.png"/>
+				</div>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide SlideCode">
+		<div class="Code">
+			<pre class="Code-14">
+				<h2 class="Code-title"><span class="Code--brown">РАСЧЕТ СИЛЫ КУРСОРА</span></h2>
+				<div class="CodeSize">
+					<code>cursorForce <span class="Code--red">= new</span> Vector(<span class="Code--purple">0</span>, <span class="Code--purple">0</span>);</code>
+
+					<code><span class="Code--blue">if</span> (cursorPos.x <span class="Code--red">>=</span> <span class="Code--purple">0</span>) {</code>
+					<code>	displCursor <span class="Code--red">=</span> obj.pos.<span class="Code--blue">subtract</span>(cursorPos);</code>
+					<code>	cursorDist <span class="Code--red">=</span> displCursor.<span class="Code--blue">length</span>();</code>
+
+					<code>	<span class="Code--blue">if</span> (cursorDist <span class="Code--red">></span> 1 <span class="Code--red">&&</span> </code>
+					<code>		cursorDist <span class="Code--red"><=</span> cursorForceZoomed) {</code>
+							    
+					<code>		<span class="Code--blue">var</span> func <span class="Code--red">=</span> cursorForceZoomed <span class="Code--red">/</span> </code>
+					<code>					(cursorDist <span class="Code--red">*</span> cursorDist);</code>
+					<code>		cursorForce <span class="Code--red">=</span> displCursor.multiply(func);</code>
+					<code>	}</code>
+					<code>}</code>
+
+					<img class="Formula--80" src="pictures/formula80.png"/>
+				</div>
+			</pre>
+		</div>
+	</section>
+
+	
 
 	<section class="slide SlideFooter">
 		<div>
